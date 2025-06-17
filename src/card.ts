@@ -38,19 +38,28 @@ class Card implements CardInterface{
                     })
                 }
 
-                if (index>=10){
+                else if (index>=10){
+                   
+                    let high_card_name = ""
+
+                    if(index == 10) high_card_name = "J"
+                    if (index == 11) high_card_name = "Q"
+                    if (index == 12) high_card_name = "K"
+
                     cards.push({
-                        card_name : `${index+1}${card_type}`,
+                        card_name : `${high_card_name}${card_type}`,
                         card_type : card_type as CardType,
                         card_value : 10
                         
                     })
+
+
                 } else {
 
                     cards.push({
                         card_name : `${index+1}${card_type}`,
                         card_type : card_type as CardType,
-                        card_value : 10
+                        card_value : index+1
                         
                     })
                 }
@@ -58,12 +67,37 @@ class Card implements CardInterface{
             }
         });
 
+        Card.shuffle_cards(cards)
+
+
         return cards
     }
 
 
 
+
+    public static shuffle_cards(cards:CardInterface[]){
+
+        cards.forEach((card, index) => {
+            let temp:CardInterface
+            let random_index = Math.floor(Math.random() * cards.length);
+            
+            temp = cards[index]
+            cards[index] = cards[random_index]
+            cards[random_index] = temp
+
+        });
+
+    }
+
+
+
 }
+
+
+
+
+
 
 
 
