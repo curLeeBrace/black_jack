@@ -11,11 +11,14 @@ let player = new player_1.Player();
 let dealer = new dealer_1.Dealer();
 while (player.player_funds > 0) {
     console.log(`Player's Fund : ₱${player.player_funds}`);
+    // placing bet
     let player_bet = Number(promp("Enter Your Bet : "));
+    // check if bet is valid
     if (player_bet < 0 || isNaN(player_bet)) {
         console.log("Invalid Bet!");
     }
     else {
+        // distribute card to player and dealer 
         player.player_bet = player_bet;
         player.hit();
         dealer.hit();
@@ -23,6 +26,21 @@ while (player.player_funds > 0) {
         dealer.hit();
         console.log(player.display_cards());
         console.log(dealer.display_cards());
-        break;
+        let player_action = "";
+        while (player_action !== "stand") {
+            player_action = promp("Your action hit or stand? : ");
+            if (player_action == "hit") {
+                player.hit();
+                console.log(player.display_cards());
+            }
+            else {
+                console.log("Invalid Action");
+            }
+        }
+        // if(player_action == "hit" || "stand"){
+        // }
+        // else {
+        //     console.log("Invalid Action!")
+        // }
     }
 }

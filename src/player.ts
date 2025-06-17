@@ -7,7 +7,7 @@ class Player extends Action{
     public player_funds:number = 200
     public player_cards:Card[] = []
     public player_bet:number = 0
-
+   
 
 
 
@@ -28,8 +28,6 @@ class Player extends Action{
     stand(){
 
 
-
-
     }
 
     get_total_cards_value():number{
@@ -45,13 +43,35 @@ class Player extends Action{
 
     display_cards():string{
 
+        let display = ""
         let current_cards = this.player_cards.map(player_card => {
 
             return ` ${player_card.card_name}`
         })
 
-        return `Your Hand :${current_cards} Total : ${this.get_total_cards_value()}`
+        if(this.get_total_cards_value() < 21){
+            display = `Your Hand :${current_cards} Total : ${this.get_total_cards_value()}`
+        } else {
+            display = `Your Hand :${current_cards} Total : ${this.get_total_cards_value()} -> Bust!`
+        }
+
+
+        return display
     }
+
+    is_player_bust():boolean{
+
+        let is_bust = false
+        if(this.get_total_cards_value() < 21){
+            is_bust = false
+        } else {
+             is_bust = true
+        }
+
+        return is_bust
+    }
+
+
 
 
 }

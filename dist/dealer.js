@@ -24,9 +24,9 @@ class Dealer extends action_1.Action {
         });
         return total;
     }
-    display_cards() {
+    display_cards(player_action) {
         let display = "";
-        if (this.dealer_cards.length > 1) {
+        if (player_action == undefined || player_action == "hit") {
             display = `Dealer Hand :${this.dealer_cards[0].card_name} [Hidden]`;
         }
         else {

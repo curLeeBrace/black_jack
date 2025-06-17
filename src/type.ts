@@ -12,10 +12,6 @@ type Actions = "hit" | "stand"
 
 
 
-
-
-
-
 export {
     CardInterface,
     Actions,

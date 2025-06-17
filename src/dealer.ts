@@ -1,5 +1,6 @@
 import { Action } from "./action"
 import { Card } from "./card"
+import { Actions } from "./type"
 
 class Dealer extends Action{
 
@@ -35,15 +36,17 @@ class Dealer extends Action{
     }
 
 
-    display_cards(){
+
+    display_cards(player_action? : Actions){
 
         let display : string = ""
 
-        if (this.dealer_cards.length > 1){
+        if (player_action == undefined || player_action == "hit"){
 
             display = `Dealer Hand :${this.dealer_cards[0].card_name} [Hidden]`
 
-        } else {
+        } 
+        else {
 
 
             let current_cards = this.dealer_cards.map(dealer_card => {
@@ -51,8 +54,17 @@ class Dealer extends Action{
                 return ` ${dealer_card.card_name}`
             })
 
+
             display = `Dealer Hand :${current_cards} Total : ${this.get_total_cards_value()}`
         }
+
+
+
+
+
+
+
+
 
 
         return display
