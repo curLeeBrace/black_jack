@@ -43,7 +43,8 @@ while(player.player_funds > 0){
                 console.log(player.display_cards())
                  // check if player card is greater than 21 then if, it cause bust/lose
                 if(player.is_player_bust()){
-                    console.log(dealer.display_cards())
+                    player_action = "bust"
+                    console.log(dealer.display_cards(player_action))
                     
 
                     break // exit to this loop if the player is bust

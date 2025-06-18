@@ -27,10 +27,27 @@ class Player extends action_1.Action {
         return total;
     }
     display_cards() {
+        let display = "";
         let current_cards = this.player_cards.map(player_card => {
             return ` ${player_card.card_name}`;
         });
-        return `Your Hand :${current_cards} Total : ${this.get_total_cards_value()}`;
+        if (this.get_total_cards_value() < 21) {
+            display = `Your Hand :${current_cards} Total : ${this.get_total_cards_value()}`;
+        }
+        else {
+            display = `Your Hand :${current_cards} Total : ${this.get_total_cards_value()} -> Bust!`;
+        }
+        return display;
+    }
+    is_player_bust() {
+        let is_bust = false;
+        if (this.get_total_cards_value() < 21) {
+            is_bust = false;
+        }
+        else {
+            is_bust = true;
+        }
+        return is_bust;
     }
 }
 exports.Player = Player;

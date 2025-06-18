@@ -19,9 +19,7 @@ class Dealer extends Action{
     }
 
     stand(){
-
-
-
+        
     }
 
     get_total_cards_value():number{
@@ -37,7 +35,7 @@ class Dealer extends Action{
 
 
 
-    display_cards(player_action? : Actions){
+    display_cards(player_action? : string){
 
         let display : string = ""
 
